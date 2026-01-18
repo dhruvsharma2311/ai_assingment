@@ -22,9 +22,6 @@ TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 if not GROQ_API_KEY or not TAVILY_API_KEY:
     raise ValueError("Missing GROQ_API_KEY or TAVILY_API_KEY in .env")
 
-PERSIST_DIR = "chroma_db"
-COLLECTION_NAME = "claims_collection"
-
 # -------------------------
 # LLM
 # -------------------------
@@ -65,9 +62,7 @@ def create_vectordb(chunks):
 
     vectordb = Chroma.from_documents(
         documents=chunks,
-        embedding=embeddings,
-        persist_directory=PERSIST_DIR,
-        collection_name=COLLECTION_NAME
+        embedding=embeddings
     )
     return vectordb
 
