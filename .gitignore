@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vector database
+chroma_db/
+
+# Streamlit config
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
