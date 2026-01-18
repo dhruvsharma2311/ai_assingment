@@ -10,17 +10,20 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_community.tools.tavily_search import TavilySearchResults
+import streamlit as st
 
 # -------------------------
 # ENV SETUP
 # -------------------------
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+# Try to get keys from Streamlit secrets first
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))
+TAVILY_API_KEY = st.secrets.get("TAVILY_API_KEY", os.getenv("TAVILY_API_KEY"))
 
 if not GROQ_API_KEY or not TAVILY_API_KEY:
-    raise ValueError("Missing GROQ_API_KEY or TAVILY_API_KEY in .env")
+    st.error("GROQ_API_KEY or TAVILY_API_KEY is missing! Please set them in Streamlit Secrets or .env")
+    st.stop()  # Stop execution so the app doesn't crash
 
 # -------------------------
 # LLM
