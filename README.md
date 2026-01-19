@@ -10,16 +10,32 @@ It demonstrates:
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo
 
-- Upload any PDF document
-- Automatically extract **verifiable claims** (numbers, dates, statistics, facts)
-- Verify each claim using live web search
-- Classify claims as:
-  - ✅ **Verified**
-  - ⚠️ **Inaccurate**
-  - ❌ **False**
-- Clean and simple Streamlit interface
+🔗 **Deployed App:**  
+👉 [link of the app: https://dhruvsharma2311-ai-assingment-app-4pdcsf.streamlit.app/]
+
+--- 
+
+## 🧠 What This Project Does
+
+1. **Upload a PDF**
+   - Drag-and-drop any PDF document containing factual information.
+
+2. **Extract Claims**
+   - Identifies factual, verifiable claims (numbers, dates, statistics, measurable facts).
+
+3. **Retrieve Context (RAG)**
+   - Uses a vector database (Chroma) to retrieve relevant document chunks.
+
+4. **Verify Using Live Web Search**
+   - Uses Tavily Search to verify each claim against real-time web data.
+
+5. **Generate a Report**
+   - Each claim is flagged as:
+     - ✅ **Verified**
+     - ⚠️ **Inaccurate**
+     - ❌ **False**
 
 ---
 
@@ -34,12 +50,49 @@ It demonstrates:
 
 ---
 
-## 📁 Project Structure
--app.py # Streamlit UI
--rag.py # RAG + claim verification logic
--chroma_db/ # Vector database (auto-created)
--.env # API keys
--README.md
+## 🧰 Tech Stack
 
-## How to run 
-- streamlit run app.py
+- **Python**
+- **LangChain**
+- **RAG (Retrieval-Augmented Generation)**
+- **Chroma Vector Database**
+- **HuggingFace Embeddings**
+- **Groq LLM (Free API)**
+- **Tavily Search API**
+- **Streamlit (UI)**
+
+---
+
+## 📂 Project Structure
+
+ai_assignment/
+├── app.py # Streamlit UI
+├── rag.py # RAG + verification pipeline
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── .env # API keys (not committed)
+
+---
+
+## 💻 Usage
+
+1. Clone the repository:
+
+```bash
+git clone <repo_url>
+cd ai_assignment
+```
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Add yourvAPI keys in .env:
+```bash
+GROQ_API_KEY=your_groq_api_key
+TAVILY_API_KEY=your_tavily_api_key
+```
+4. Run the Streamlit app:
+```bash
+streamlit run app.py
+```
